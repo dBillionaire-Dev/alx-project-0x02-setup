@@ -9,3 +9,15 @@ export interface ButtonProps {
     children: React.ReactNode;
     onClick?: () => void;
 }
+
+export interface PostModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onSubmit: (data: { title: string; content: string }) => void;
+}
+
+export interface PostProps {
+    userId: number;
+    title: string;
+    content: string;
+}
