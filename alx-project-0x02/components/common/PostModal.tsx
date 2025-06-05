@@ -1,36 +1,46 @@
 import React, { useState } from 'react';
-import Card from '@/components/common/Card';
-import PostModal from '@/components/common/PostModal';
 
-interface Post {
-    title: string;
-    content: string;
+interface PostModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onSubmit: (data: { title: string; content: string }) => void;
 }
 
-const HomePage = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+const PostModal: React.FC<PostModalProps> = ({ isOpen, onClose, onSubmit }) => {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
-    const handleAddPost = (newPost: Post) => {
-        setPosts([...posts, newPost]);
+    if (!isOpen) return null;
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        onSubmit({ title, content });
+        setTitle('');
+        setContent('');
+        onClose();
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <h1>Posts</h1>
-            <button onClick={() => setIsModalOpen(true)} style={{ marginBottom: '1rem' }}>
-                Add Post
-            </button>
-            {posts.map((post, index) => (
-                <Card key={index} title={post.title} content={post.content} />
-            ))}
-            <PostModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSubmit={handleAddPost}
-            />
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    required
+                />
+                <textarea
+                    placeholder="Content"
+                    value={content}
+                    onChange={e => setContent(e.target.value)}
+                    required
+                />
+                <button type="submit">Submit</button>
+                <button type="button" onClick={onClose}>Cancel</button>
+            </form>
         </div>
     );
 };
 
-export default HomePage;
+export default PostModal;
