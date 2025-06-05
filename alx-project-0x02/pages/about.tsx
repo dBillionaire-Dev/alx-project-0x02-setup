@@ -1,5 +1,5 @@
 import Header from "@/components/layout/Header"
-
+import Button from "@/components/common/Button"
 const About = () => {
     return (
         <div>
@@ -12,6 +12,12 @@ const About = () => {
                 <p className="mt-4 text-lg">This is the about page of our Next.js application.</p>
                 <p className="mt-2 text-sm text-gray-500">Learn more about our features and team!</p>
             </main>
+
+            <div className="space-y-4 p-6">
+                <Button size="small" shape="rounded-sm">Small Rounded-sm</Button>
+                <Button size="medium" shape="rounded-md">Medium Rounded-md</Button>
+                <Button size="large" shape="rounded-full">Large Rounded-full</Button>
+            </div>
 
             <footer className="flex items-center justify-center w-full h-24 border-t">
                 <a
