@@ -1,7 +1,21 @@
-#Empty file to ensure the directory is treated as a module
-export * from './IComponent';
-export * from './IComponentProps';
-export * from './IComponentState';
-export * from './IComponentContext';
-export * from './IComponentEvent';
-export * from './IComponentLifecycle';  
+export interface User {
+    id: string;
+    name: string;
+    email: string;
+    avatarUrl?: string;
+}
+
+export interface Post {
+    id: string;
+    title: string;
+    content: string;
+    authorId: string;
+    createdAt: string;
+}
+export interface Comment {
+    id: string;
+    postId: string;
+    authorId: string;
+    content: string;
+    createdAt: string;
+}
