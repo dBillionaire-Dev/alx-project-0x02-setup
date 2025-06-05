@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Header: React.FC = () => {
     return (
         <div>
@@ -6,13 +8,13 @@ const Header: React.FC = () => {
                     <div className="text-white text-lg font-bold">MyApp</div>
                     <ul className="flex space-x-4">
                         <li>
-                            <a href="/" className="text-white hover:text-gray-300">Home</a>
+                            <Link href="/home" className="text-white hover:text-gray-300">Home</Link>
                         </li>
                         <li>
-                            <a href="/about" className="text-white hover:text-gray-300">About</a>
+                            <Link href="/about" className="text-white hover:text-gray-300">About</Link>
                         </li>
                         <li>
-                            <a href="/contact" className="text-white hover:text-gray-300">Contact</a>
+                            <Link href="/contact" className="text-white hover:text-gray-300">Contact</Link>
                         </li>
                     </ul>
                 </div>
